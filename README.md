@@ -1,6 +1,8 @@
-# Tauri + Vanilla
+# Tauri + Node.js + Vanilla
 
-This template should help get you started developing with Tauri in vanilla HTML, CSS and Javascript.
+1. Ensure that Node.js and the Rust environment are installed on your computer.
+2. Clone this repository and run `npm install`.
+3. Run `npm run tauri dev` to launch the local desktop application.
 
 ## Recommended IDE Setup
 
