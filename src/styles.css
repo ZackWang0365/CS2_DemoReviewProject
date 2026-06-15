@@ -1,0 +1,143 @@
+/* 基础重置：切断所有引起滚动条的罪魁祸首 */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* 强制干掉全局滚动条 */
+  background-color: #121212;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 整个应用的骨架 (上下排布) */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* 1. 顶部 Header */
+.app-header {
+  height: 60px;
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #646cff;
+  letter-spacing: 1px;
+}
+
+/* 下方的主体容器 (左右排布) */
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden; /* 防止内部内容撑破 */
+}
+
+/* 2. 左侧侧边栏 */
+.sidebar {
+  width: 300px;
+  background-color: #181818;
+  border-right: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 侧边栏上：拖拽区 */
+.drop-zone {
+  height: 120px;
+  margin: 20px;
+  border: 2px dashed #535bf2;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #242424;
+  transition: all 0.3s ease;
+}
+
+.drop-zone.dragover {
+  background-color: #3a3a3a;
+  border-color: #4ade80;
+  transform: scale(1.02);
+}
+
+#drop-title {
+  font-size: 1rem;
+  margin: 0;
+  padding: 10px;
+  word-break: break-all; /* 防止长文件名撑破盒子 */
+}
+
+/* 侧边栏下：筛选面板 */
+.control-panel {
+  flex: 1;
+  padding: 0 20px 20px 20px;
+  overflow-y: auto; /* 如果选项太多，只有这个区域可以上下滚动 */
+}
+
+.control-panel h3 {
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+  color: #aaa;
+}
+
+.filter-group label {
+  display: block;
+  margin: 15px 0;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.filter-group label:hover {
+  color: #646cff;
+}
+
+/* 3. 右侧地图展示区 */
+.map-area {
+  flex: 1;
+  background-color: #0f0f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* 🌟 地图容器 (魔法在这里) */
+#map-container {
+  position: relative;
+  /* 高度和宽度最多只能占满可用空间的 100% */
+  max-width: 100%;
+  max-height: 100%;
+  /* 强制保持 1:1 正方形比例！ */
+  aspect-ratio: 1 / 1;
+  /* 如果容器受限，优先以高度为准撑满 */
+  height: 100%;
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.8);
+}
+
+#heatmap-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hidden {
+  display: none !important;
+}
