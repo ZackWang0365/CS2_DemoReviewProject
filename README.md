@@ -1,4 +1,4 @@
-# Tauri + Node.js + Vanilla
+# Tauri + Node.js + Rust + Vanilla
 
 1. Ensure that Node.js and the Rust environment are installed on your computer.
 2. Clone this repository and run `npm install`.
